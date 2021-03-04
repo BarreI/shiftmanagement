@@ -5,6 +5,9 @@
 ### dotenv ###
 .env
 
+### test ###
+testhtml/
+
 ### Node ###
 # Logs
 logs
