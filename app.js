@@ -4,11 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+const session = require('express-session');
 
 const Users = require('./models/user');
 const Stores = require('./models/store');
 const Shifts = require('./models/shift');
 const Affiliations = require('./models/affiliation');
+const { env } = require('process');
 
 Users.sync().then(() => {
   Stores.belongsTo(Users, {foreignKey:'ownerid'});
@@ -19,6 +21,8 @@ Users.sync().then(() => {
     Shifts.sync();
   });
 });
+
+var indexRouter = require('./routes/index');
 
 const app = express();
 app.use(helmet());
@@ -32,9 +36,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: env.sessionCode , resave: false , saveUninitialized: false }))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

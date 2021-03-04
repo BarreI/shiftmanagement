@@ -1,5 +1,4 @@
 'use strict'
-const { SET_DEFERRED } = require('sequelize/types/lib/deferrable');
 const loader = require('./sequelize-loader');
 const Sequelize = loader.Sequelize;
 
@@ -8,7 +7,7 @@ const Shifts = loader.database.define(
   {
     shiftid: {
       type: Sequelize.UUID,
-      primarykey:true,
+      primaryKey: true,
       allownull: false
     },
     affiliationid: {

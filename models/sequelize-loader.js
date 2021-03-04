@@ -1,6 +1,6 @@
 'use strict'
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(env.dbadress);
+const sequelize = new Sequelize('postgres://postgres:postgres@localhost/shiftdb');
 
 module.exports = {
   database: sequelize,
