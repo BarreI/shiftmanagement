@@ -36,8 +36,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: env.sessionCode , resave: false , saveUninitialized: false }))
+app.use(express.static(path.join(__dirname, 'vues')));
+app.use(session({secret: env.sessionCode , resave: false , saveUninitialized: false }));
+app.use(express.static('public'));
 
 app.use('/', accountRouter);
 
