@@ -10,6 +10,15 @@ const Stores = require('./models/store');
 const Shifts = require('./models/shift');
 const Affiliations = require('./models/affiliation');
 
+Users.sync().then(() => {
+  Stores.belongsTo(Users, {foreignKey:'ownerid'});
+  Stores.sync();
+  Affiliations.belongsTo(Users, {foreignKey:'systemid'});
+  Affiliations.sync().then(() => {
+    Shifts.belongsTo(Affiliations, {foreignKey:'affiliationid'});
+    Shifts.sync();
+  });
+});
 
 const app = express();
 app.use(helmet());

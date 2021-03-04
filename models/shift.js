@@ -8,10 +8,11 @@ const Shifts = loader.database.define(
   {
     shiftid: {
       type: Sequelize.UUID,
+      primarykey:true,
       allownull: false
     },
-    affliationid: {
-      type: Sequelize.UUID,
+    affiliationid: {
+      type: Sequelize.UUID, 
       allownull: false
     },
     confirm: {

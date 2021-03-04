@@ -2,11 +2,12 @@
 const loader = require('./sequelize-loader');
 const Sequelize = loader.Sequelize;
 
-const Affiliatons = loader.database.define(
+const Affiliations = loader.database.define(
   'affiliations',
   {
-    affiliatonid: {
+    affiliationid: {
       type: Sequelize.UUID,
+      primaryKey: true,
       allownull: false
     },
     systemid: {
@@ -24,4 +25,4 @@ const Affiliatons = loader.database.define(
   }
 );
 
-module.exports = Affiliatons;
+module.exports = Affiliations;

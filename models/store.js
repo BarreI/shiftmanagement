@@ -7,6 +7,7 @@ const Stores = loader.database.define (
   {
     storeid:{
       type: Sequelize.UUID,
+      primaryKey: true,
       allownull: false
     },
     storename:{
