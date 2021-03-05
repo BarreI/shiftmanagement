@@ -1,7 +1,7 @@
 const test = {
   data() {
     return {
-      seen: false
+      seen: true
     }
   }
 }
