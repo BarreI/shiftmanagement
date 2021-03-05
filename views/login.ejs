@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クムシフ <%= title %>
+  </title>
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <div>
+    <form method="post" action="/login">
+      <div>
+        <p>id</p>
+        <input type="text" name="userid">
+      </div>
+      <div>
+        <p>pass</p>
+        <input type="password" name="pass">
+      </div>
+      <button type="submit">ログイン</button>
+    </form>
+  </div>
+  <script src="javascripts/login.js"></script>
+</body>
+
+</html>

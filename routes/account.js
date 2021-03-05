@@ -21,7 +21,7 @@ router.post('/', function (req, res, next) {
         username: req.body.username,
         address: req.body.address,
         pass: passHash(req.body.pass),
-        storecount: 0
+        storecount: 0 
       }
     }).then(([user, created]) => {
       if(created){

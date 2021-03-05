@@ -30,9 +30,9 @@ const Users = loader.database.define(
       type: Sequelize.INTEGER,
       allownull: false
     },
-    session:{
+    session: {
       type: Sequelize.UUID,
-      allownull:false
+      allownull:true
     }
   },
   {
