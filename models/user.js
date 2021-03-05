@@ -18,7 +18,7 @@ const Users = loader.database.define(
       type: Sequelize.STRING,
       allownull:false
     },
-    adress: {
+    address: {
       type: Sequelize.STRING,
       allownull:false
     },

@@ -6,16 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/vue@3.0.7"></script>
-  <title>テスト</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <title>クムシフ</title>
 </head>
 
 <body>
-  <p>てすとだみょん</p>
-  <p>
-    <%= title %>
-  </p>
-  <div id="seentest">
-    <span v-if="seen">aaaaaaaa</span>
+  <h1>新規登録</h1>
+  <div id="accountForm">
+    <form method="post" action="/">
+      <div>
+        <div>
+          <p>name</p>
+          <input type="text" name="username">
+        </div>
+        <div>
+          <p>id</p>
+          <input type="text" name="userid">
+        </div>
+        <div>
+          <p>email</p>
+          <input type="text" name="address">
+        </div>
+        <div>
+          <p>password</p>
+          <input type="password" name="pass">
+        </div>
+      </div>
+      <button type="submit">登録</button>
+    </form>
   </div>
   <script src="javascripts/vueAccount.js"></script>
 </body>
