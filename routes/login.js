@@ -15,7 +15,7 @@ router.post('/', function (req, res, next) {
       where: {
         userid: req.body.userid
       }
-    }).then((userData) => { 
+    }).then((userData) => { //todo パスがない場合の処理
       if(!userData){
         console.log("おそらくデータがない");
       }

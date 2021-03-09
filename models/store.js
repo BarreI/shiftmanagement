@@ -18,7 +18,7 @@ const Stores = loader.database.define (
       type: Sequelize.UUID,
       allownull: false
     },
-    commnet:{
+    comment:{
       type: Sequelize.TEXT,
       allownull: false
     }

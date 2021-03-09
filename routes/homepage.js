@@ -20,8 +20,8 @@ router.get('/',  async function (req, res) {
         systemid: req.session.user
       }
     }).then((stores) => {
-      console.log("あ")
       console.log(stores);
+      res.render('homepage', {title:"ホームページ"});
     })
   }else{
     console.log("homepage else")
