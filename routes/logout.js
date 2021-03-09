@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+
+router.get('/',function (req,res,next) {
+  delete req.session.user;
+  delete req.session.authentication;
+  res.redirect('/login');
+})
+
+module.exports = router;

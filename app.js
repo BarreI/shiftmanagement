@@ -29,6 +29,7 @@ const accountRouter = require('./routes/account');
 const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/homepage')
 const newStoreRouter = require('./routes/newstore');
+const logoutRouter = require('./router/newstore');
 
 const app = express();
 app.use(helmet());
@@ -48,6 +49,7 @@ app.use('/', accountRouter);
 app.use('/login', loginRouter);
 app.use('/homepage', homeRouter);
 app.use('/newstore', newStoreRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
