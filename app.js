@@ -14,13 +14,15 @@ const Shifts = require('./models/shift');
 const Affiliations = require('./models/affiliation');
 
 Users.sync().then(() => {
-  Stores.belongsTo(Users, {foreignKey:'ownerid'});
-  Stores.sync();
-  Affiliations.belongsTo(Users, {foreignKey:'systemid'});
-  Affiliations.sync().then(() => {
-    Shifts.belongsTo(Affiliations, {foreignKey:'affiliationid'});
-    Shifts.sync();
-  });
+  Stores.belongsTo(Users, { foreignKey: 'ownerid' });
+  Stores.sync().then(() => {
+    Affiliations.belongsTo(Users, { foreignKey: 'systemid' });
+    Affiliations.belongsTo(Stores, { foreignKey: 'storeid'});
+    Affiliations.sync().then(() => {
+      Shifts.belongsTo(Affiliations, { foreignKey: 'affiliationid' });
+      Shifts.sync();
+    });
+  })
 });
 
 const accountRouter = require('./routes/account');
@@ -39,19 +41,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('views'));
-app.use(session({secret: env.sessionCode , resave: false , saveUninitialized: false }));
+app.use(session({ secret: env.sessionCode, resave: false, saveUninitialized: false }));
 
 app.use('/', accountRouter);
 app.use('/login', loginRouter);
 app.use('/homepage', homeRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
