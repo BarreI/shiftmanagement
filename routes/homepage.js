@@ -5,9 +5,10 @@ const Affiliations = require('../models/affiliation');
 const Check = require('./check.js');
 const router = express.Router();
 
-router.get('/', async function (req, res) {
+router.get('/',  async function (req, res) {
   let result = await Check(req.session.authentication, req.session.user);
-  if (result) {
+  if (result[0]) {
+    console.log("result[0] true");
     Affiliations.findAll({
       include: [
         {
@@ -19,10 +20,12 @@ router.get('/', async function (req, res) {
         systemid: req.session.user
       }
     }).then((stores) => {
+      console.log("あ")
       console.log(stores);
     })
   }else{
     console.log("homepage else")
+    console.log("通ってるよ")
   }
 })
 

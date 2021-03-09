@@ -25,6 +25,7 @@ Users.sync().then(() => {
 
 const accountRouter = require('./routes/account');
 const loginRouter = require('./routes/login');
+const homeRouter = require('./routes/homepage')
 
 const app = express();
 app.use(helmet());
@@ -42,6 +43,7 @@ app.use(session({secret: env.sessionCode , resave: false , saveUninitialized: fa
 
 app.use('/', accountRouter);
 app.use('/login', loginRouter);
+app.use('/homepage', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
