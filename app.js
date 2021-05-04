@@ -29,7 +29,7 @@ const accountRouter = require('./routes/account');
 const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/homepage')
 const newStoreRouter = require('./routes/newstore');
-const logoutRouter = require('./router/newstore');
+const logoutRouter = require('./routes/logout');
 
 const app = express();
 app.use(helmet());

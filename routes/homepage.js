@@ -21,11 +21,11 @@ router.get('/',  async function (req, res) {
       }
     }).then((stores) => {
       console.log(stores);
-      res.render('homepage', {title:"ホームページ"});
+      res.render('homepage', {title:"ホームページ", user:result[1].username});
     })
   }else{
-    console.log("homepage else")
-    console.log("通ってるよ")
+    console.log("非認証ユーザー");
+    res.redirect('/login');
   }
 })
 

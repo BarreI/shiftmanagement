@@ -7,4 +7,4 @@ module.exports = {
   Sequelize: Sequelize
 };
 
-//indexは知識不足のためなし
+//indexは知識不足のためなし＾

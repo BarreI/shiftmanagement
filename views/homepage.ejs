@@ -12,8 +12,22 @@
     <a href="/logout"><%= user %>をログアウト</a> 
   </div>
   <div>
-    <lo>
-    </lo>
+    <p>参加中の店舗</p>
+    <div id="storeone">
+      <span v-if="seen_1">
+        <a href="/store/" + <%= storename_one %></a>
+      </span>
+    </div>
+    <div id="storetwo">
+      <span v-if="seen_2">
+        <a href="/store/" + <%= storename_two %></a>
+      </span>
+    </div>
+    <div id="storethree">
+      <span v-if="seen_3">
+        
+      </span>
+    </div>
   </div>
   <script src="javascripts/homepage.js"></script>
 </body>
