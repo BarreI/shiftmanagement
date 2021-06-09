@@ -8,7 +8,6 @@ const router = express.Router();
 router.get('/',  async function (req, res) {
   let result = await Check(req.session.authentication, req.session.user);
   if (result[0]) {
-    console.log("result[0] true");
     Affiliations.findAll({
       include: [
         {

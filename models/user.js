@@ -22,6 +22,14 @@ const Users = loader.database.define(
       type: Sequelize.STRING,
       allownull:false
     },
+    addresstoken: {
+      type: Sequelize.UUID,
+      allownull:false
+    },
+    flag: {
+      type: Sequelize.BOOLEAN,
+      allownull: false
+    },
     pass: {
       type: Sequelize.STRING,
       allownull:false

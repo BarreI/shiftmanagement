@@ -30,6 +30,7 @@ const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/homepage')
 const newStoreRouter = require('./routes/newstore');
 const logoutRouter = require('./routes/logout');
+const authRouter = require('./routes/secondauth');
 
 const app = express();
 app.use(helmet());
@@ -37,6 +38,12 @@ app.use(helmet());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.engine('jsx', require('express-react-views').createEngine());
+
+app.get('/test',function(req,res) {
+  console.log("test通ってます");
+  res.render('index.jsx');
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,6 +57,7 @@ app.use('/login', loginRouter);
 app.use('/homepage', homeRouter);
 app.use('/newstore', newStoreRouter);
 app.use('/logout', logoutRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

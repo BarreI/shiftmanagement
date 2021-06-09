@@ -1,4 +1,5 @@
 const express = require('express');
+const NodeMailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const Users = require('../models/user');
 const uuid = require('uuid');
@@ -11,6 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req, res, next) {
   if(/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid) && /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address)){
+    let addresstoken = uuid.v4();
     Users.findOrCreate({
       where: {
         [Op.or] : [{userid: req.body.userid}, {address: req.body.address}]
@@ -21,11 +23,44 @@ router.post('/', function (req, res, next) {
         username: req.body.username,
         address: req.body.address,
         pass: passHash(req.body.pass),
-        storecount: 0 
+        storecount: 0,
+        addresstoken: addresstoken,
+        flag: false,
       }
     }).then(([user, created]) => {
       if(created){
         console.log("該当データが存在しなかったため新規作成しました");
+        function sendMail (smtpData, mailData) {
+          const transporter = NodeMailer.createTransport(smtpData)
+          transporter.sendMail(mailData, function (error, info) {
+            if (error) {
+              console.log(error)
+            } else {
+              console.log('Email sent: ' + info.response)
+            }
+          })
+        }
+        function main() {
+          const smtpData = {
+            host: 'smtp.gmail.com',
+            port: '465',            
+            secure: true,           
+            auth: {
+              user: 'kumusifu@gmail.com',  
+              pass: 'KUmusfiuXXX27'        
+            }
+          }
+          // 送信内容を作成
+          const mailData = {
+            from: '"シフト作成管理サイト クムシフ" <' + smtpData.auth.user + '>', 
+            to: req.body.address,                        
+            subject: 'クムシフ 二段階認証',                          
+            text: '登録には以下のURLをクリックしてください \n' + 'http://localhost:8000/auth/' + addresstoken,
+            html: '<b>登録には以下のURLをクリックしてください \n' + 'http://localhost:8000/auth/' + addresstoken + '</b>',                      
+          }
+          sendMail(smtpData, mailData)
+        }
+        main();
         res.redirect('/login');
       }else{
         console.log("useridかaddressがすでに使用されているため登録できません"); //TODO エラーの分岐
