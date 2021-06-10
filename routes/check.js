@@ -26,3 +26,7 @@ module.exports = async (authentication, user) => {
     }
   }
 }
+
+//check に引数を増やして 例: authentication user file名
+
+//チェックの中で必要データを調べて返すことによってごちゃごちゃ感を減らせる
