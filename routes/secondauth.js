@@ -3,6 +3,7 @@ const Users = require('../models/user');
 const uuid = require('uuid');
 const router = express.Router();
 
+//TODO せきゅりてぃのきょうか
 router.get('/:token', function (req,res,next) {
   let token = req.params.token;
   Users.findOne({
@@ -18,7 +19,8 @@ router.get('/:token', function (req,res,next) {
       );
       res.redirect('/homepage')
     }else{
-      console.log("トークンが一致しません");
+      console.log("トークンが存在しません");
+      //TODO トークンが違うといった趣旨の連絡
       res.redirect('/login')
     }
   })

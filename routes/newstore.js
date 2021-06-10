@@ -8,9 +8,11 @@ const router = express.Router();
 
 router.get('/', async function (req, res, next) {
   let result = await Check(req.session.authentication, req.session.user);
-  if(result[0]){
+  if(result[0] && result[1]){
     console.log("newstore");
     res.render('newstore', { user: result[1], title: "newstore"});
+  }else if(result[0]){
+    //TODOに段階認証を有効化するように促す文章
   }else{
     res.redirect('/login');
   }

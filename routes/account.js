@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const Users = require('../models/user');
 const uuid = require('uuid');
 const { Op } = require('sequelize');
+const { env } = require('process');
+require('dotenv').config();
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -47,8 +49,8 @@ router.post('/', function (req, res, next) {
             port: '465',            
             secure: true,           
             auth: {
-              user: 'kumusifu@gmail.com',  
-              pass: 'KUmusfiuXXX27'        
+              user: env.nodemaileruser,  
+              pass: env.nodemailerpass,        
             }
           }
           const mailData = {

@@ -14,12 +14,15 @@ module.exports = async (authentication, user) => {
         systemid: user
       }
     });
-    if (authentication == result.session) {
-      console.log("認証成功");
-      return [true, result]
-    } else {
+    if (authentication == result.session && result.flag == true) {
+      console.log("認証成功 二段階認証ユーザ");
+      return [true, true];
+    } else if(authentication == result.session){
+      console.log("認証成功 二段階認証を有効にしてください");
+      return [true, false];
+    }else{
       console.log("認証失敗");
-      return [false, null];
+      return[false, false];
     }
   }
 }

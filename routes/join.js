@@ -8,9 +8,13 @@ const router = express.Router();
 
 router.get('/', async function (req,res,next) {
   let result = await Check(req.session.authentication, req.session.user);
-  if(result[0]){
+  if(result[0] && result[1]){
     console.log("ばなな")
     res.render('join')
+  }else if(result[0]){
+    //TODO 二段階認証を有効化するよう促す文章
+  }else{
+    res.redirect('./login');
   }
 });
 
