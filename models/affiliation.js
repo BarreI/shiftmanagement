@@ -15,8 +15,12 @@ const Affiliations = loader.database.define(
       allownull: false
     },
     storeid: {
-      type: Sequelize.UUID,
+      type: Sequelize.STRING,
       allownull: false
+    },
+    joined:{
+      type: Sequelize.BOOLEAN,
+      allownull:false
     }
   },
   {

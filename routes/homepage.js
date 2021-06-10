@@ -28,4 +28,14 @@ router.get('/',  async function (req, res) {
   }
 })
 
+router.get('/mypage', async function (req,res,next) {
+  let result = await Check(req.session.authentication, req.session.user);
+  if(result[0]){
+    //TODO 自身のプロフィール閲覧変更
+  }else{
+    console.log("非認証ユーザー");
+    res.redirect('/login');
+  }
+})
+
 module.exports = router;

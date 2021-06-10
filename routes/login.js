@@ -16,7 +16,6 @@ router.post('/', function (req, res, next) {
     Users.findOne({
       where: {
         userid: req.body.userid,
-        flag: true
       }
     }).then((userData) => {
       if(!userData){

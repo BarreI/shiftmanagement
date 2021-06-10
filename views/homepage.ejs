@@ -8,12 +8,19 @@
   <title>クムシフ <%= title %></title>
 </head>
 <body>
+  <h2>ホームページ</h2>
   <div>
     <a href="/logout"><%= user %>をログアウト</a> 
+    <a href="/homepage/mypage">マイページ</a>
+  </div>
+  <div>
+    <p>新しい店舗を作成する</p>
+    <a href="/newstore">作成</a>
+    <p>既存の店舗に参加する</p>
+    <a href="http://localhost:8000/join">検索</a>
   </div>
   <div>
     <p>参加中の店舗</p>
   </div>
-  <script src="javascripts/homepage.js"></script>
 </body>
 </html>

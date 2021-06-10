@@ -6,7 +6,7 @@ const Stores = loader.database.define (
   'stores',
   {
     storeid:{
-      type: Sequelize.UUID,
+      type: Sequelize.STRING,
       primaryKey: true,
       allownull: false
     },
@@ -20,7 +20,7 @@ const Stores = loader.database.define (
     },
     comment:{
       type: Sequelize.TEXT,
-      allownull: false
+      allownull: true
     }
   },
   {

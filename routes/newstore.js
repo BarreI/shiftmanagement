@@ -16,7 +16,7 @@ router.get('/', async function (req, res, next) {
   }
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', async function (req, res, next) {
   Users.findOne({
     attributes:['storecount'],
     where: {
@@ -26,27 +26,39 @@ router.post('/', function (req, res, next) {
     console.log(counter.storecount);
     console.log(typeof counter.storecount);
     if(counter.storecount == 3){
-      console.log("作成上限数に達しています");
+      console.log("作成上限数に達しています");//TODO ユーザーへの通知
       res.redirect("/homepage");
     }else{
       let number = counter.storecount + 1;
-      Stores.create({
-        storeid: uuid.v4(),
-        ownerid: req.session.user,
-        storename: req.body.name, 
-        comment: req.body.comment
-      }).then((store) => {
-        Affiliations.create({
-          affiliationid: uuid.v4(),
-          storeid: store.storeid,
-          systemid: req.session.user
-        })
-      })
-      Users.update(
-        {storecount: number},
-        {where:{systemid: req.session.user}}
-      ).then(()  =>{
-        res.redirect('/homepage');
+      Stores.findOne({
+        where:{
+          storeid: req.body.id
+        }
+      }).then((store) =>{
+        if(store){
+          console.log("すでに使用されているidです");
+          res.redirect('/join');
+        }else{
+          Stores.create({
+            storeid: req.body.id,
+            ownerid: req.session.user,
+            storename: req.body.name, 
+            comment: req.body.comment
+          }).then((store) => {
+            Affiliations.create({
+              affiliationid: uuid.v4(),
+              storeid: store.storeid,
+              systemid: req.session.user,
+              joined: true
+            })
+          })
+          Users.update(
+            {storecount: number},
+            {where:{systemid: req.session.user}}
+          ).then(()  =>{
+            res.redirect('/homepage');
+          })
+        }
       })
     }
   })

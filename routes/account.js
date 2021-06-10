@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  if(/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid) && /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address)){
+  //TODO ifの中に全て詰め込むのではなくswitchcaceで分類してエラー表示
+  if(/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid) && /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address) && req.body.userid === req.body.userid_2){
     let addresstoken = uuid.v4();
     Users.findOrCreate({
       where: {
@@ -50,7 +51,6 @@ router.post('/', function (req, res, next) {
               pass: 'KUmusfiuXXX27'        
             }
           }
-          // 送信内容を作成
           const mailData = {
             from: '"シフト作成管理サイト クムシフ" <' + smtpData.auth.user + '>', 
             to: req.body.address,                        

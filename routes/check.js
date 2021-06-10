@@ -1,7 +1,7 @@
 const express = require('express');
 const Users = require('../models/user');
 
-//TODO日時の計算を実装 セッションの時間管理
+//TODO 日時の計算を実装 セッションの時間管理
 
 module.exports = async (authentication, user) => {
   console.log("Check通ってます")
