@@ -17,7 +17,7 @@ Users.sync().then(() => {
   Stores.belongsTo(Users, { foreignKey: 'ownerid' });
   Stores.sync().then(() => {
     Affiliations.belongsTo(Users, { foreignKey: 'systemid' });
-    Affiliations.belongsTo(Stores, { foreignKey: 'storeid'});
+    Affiliations.belongsTo(Stores, { foreignKey: 'storeid' });
     Affiliations.sync().then(() => {
       Shifts.belongsTo(Affiliations, { foreignKey: 'affiliationid' });
       Shifts.sync();
@@ -40,11 +40,6 @@ app.use(helmet());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('jsx', require('express-react-views').createEngine());
-
-app.get('/test',function(req,res) {
-  console.log("test通ってます");
-  res.render('index.jsx');
-});
 
 app.use(logger('dev'));
 app.use(express.json());

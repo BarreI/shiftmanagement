@@ -30,3 +30,11 @@ const Stores = loader.database.define (
 );
 
 module.exports = Stores;
+
+/**
+ * ガンとチャートを作る上で明らかに必要なこと
+ * 営業時間
+ * 給金
+ * 営業日
+ * 
+ */
