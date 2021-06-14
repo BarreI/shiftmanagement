@@ -10,7 +10,7 @@ const router = express.Router();
 //そこらへんのもろもろの処理書いてね <3
 
 router.get('/',  async function (req, res) {
-  let result = await Check(req.session.authentication, req.session.user);
+  let result = await Check(req.session.authentication, req.session.user, file);
   if (result[0] && result[1]) {
     Affiliations.findAll({
       include: [
@@ -28,6 +28,7 @@ router.get('/',  async function (req, res) {
     })
   }else if(result[0]){
     //TODO に段階認証を有効化するように促す
+    
   }else{
     console.log("非認証ユーザー");
     res.redirect('/login');
