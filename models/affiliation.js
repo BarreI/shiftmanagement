@@ -1,4 +1,5 @@
 'use strict'
+const SESTransport = require('nodemailer/lib/ses-transport');
 const loader = require('./sequelize-loader');
 const Sequelize = loader.Sequelize;
 
@@ -49,6 +50,14 @@ const Affiliations = loader.database.define(
     sunday: {
       type: Sequelize.TEXT,
       allownull: false
+    },
+    Salary: {//通常給金
+      type: Sequelize.INTEGER,
+      allownull: true
+    },
+    allowance: {//深夜勤務などの手当給金
+      type: Sequelize.INTEGER,
+      allonull: true
     }
   },
   {
@@ -56,5 +65,7 @@ const Affiliations = loader.database.define(
     timestamps: false
   }
 );
+
+//tf文字列での5分１文字で扱う保存方法をしよう
 
 module.exports = Affiliations;
