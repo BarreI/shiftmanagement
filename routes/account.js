@@ -14,7 +14,13 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req, res, next) {
   //TODO ifの中に全て詰め込むのではなくswitchcaceで分類してエラー表示
-  if(/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid) && /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address) && req.body.userid === req.body.userid_2){
+  /**
+   * idが2文字以下16文字以上の場合
+   * メールアドレスが有効でない場合
+   * passが一致しない場合
+   * pass に大文字小文字数字が使われた 半角英数字の文字列であること
+   */
+  if(/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid) && /^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address)){
     let addresstoken = uuid.v4();
     Users.findOrCreate({
       where: {
