@@ -12,6 +12,7 @@ const router = express.Router();
 router.get('/',  async function (req, res) {
   let result = await Check(req.session.authentication, req.session.user);
   if (result[0] && result[1]) {
+    let joinedstore = [];
     let userdata = await Users.findOne({
       where: {
         systemid: req.session.user
@@ -27,18 +28,24 @@ router.get('/',  async function (req, res) {
       where: {
         systemid: req.session.user
       }
-    }).then((stores) => {
-      console.log(stores);
-      res.render('homepage', {title:"ホームページ", user:userdata.username});
+    }).then((data) => {
+      console.log(data[0].affiliationid);
+      console.log(data[0].store.storeid); //これがurlになる
+      for(var i = 0;i < userdata.storecount;i++){
+        joinedstore.push(data[i].store.storeid);
+      }
+      console.log(joinedstore);
+      res.render('homepage', {title:"ホームページ", user:userdata.username , store: joinedstore});
     })
   }else if(result[0]){
-    //TODO に段階認証を有効化するように促す
     res.redirect('/resend');
   }else{
     console.log("非認証ユーザー");
     res.redirect('/login');
   }
 })
+
+//aff を検索時にstoreからstorepage に必要なurlをとってきてhtmlに反映
 
 router.get('/mypage', async function (req,res,next) { 
   let result = await Check(req.session.authentication, req.session.user);

@@ -9,6 +9,8 @@
 <body>
   <form method="post" action="/resend">
     <div>
+      <p>二段階認証ができていません、<%= mail %> に確認用メールが届いていないか確認してください</p>
+      <p>もし届いていない場合 登録したメールアドレスが正しいものか確認してください</p>
       <p><%= mail %>に確認用メールを再送します。</p> <span><a href="/resend/change">変更</a></span>
       <button type="submit" name="sendbutton" value=<%= mail %>>送信</button>
     </div>

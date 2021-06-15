@@ -39,11 +39,11 @@ router.get('/change',async function(req,res,next) {
   }
 })
 
-router.post('/', function (req,res,next) {
+router.post('/', async function (req,res,next) {
   console.log("resend post");
   console.log(req.body.sendbutton);
   let addresstoken = uuid.v4();
-  Users.update(
+  await Users.update(
     {addresstoken: addresstoken},
     {where : {systemid :req.session.user} }
   );
@@ -76,15 +76,15 @@ router.post('/', function (req,res,next) {
     }
     sendMail(smtpData, mailData)
   }
-  main();
+  await main();
   res.redirect('/login');
 });
 
-router.post('/change', function (req,res,next) {
+router.post('/change', async function (req,res,next) {
   console.log("resendchange post");
   console.log(req.body.changedaddress);
 let addresstoken = uuid.v4();
-Users.update(
+await Users.update(
   {address: req.body.changedaddress, addresstoken: addresstoken},
   {where: {systemid : req.session.user}}
 );
@@ -118,7 +118,7 @@ Users.update(
     }
     sendMail(smtpData, mailData)
   }
-  main();
+  await main();
   res.redirect('/login');
 })
 
