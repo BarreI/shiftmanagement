@@ -38,6 +38,7 @@ router.post('/', function (req, res, next) {
           console.log("ログイン完了")
         } else {
           console.log("パスワードが間違っています");
+          res.redirect('/login');
         }
       })
     }
