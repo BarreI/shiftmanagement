@@ -39,6 +39,7 @@ const logoutRouter = require('./routes/logout');
 const authRouter = require('./routes/secondauth');
 const joinRouter = require('./routes/join');
 const resendRouter = require('./routes/resend');
+const storeRouter = require('./routes/store');
 
 const app = express();
 app.use(helmet());
@@ -63,6 +64,7 @@ app.use('/logout', logoutRouter);
 app.use('/auth', authRouter);
 app.use('/join', joinRouter);
 app.use('/resend', resendRouter);
+app.use('/store', storeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

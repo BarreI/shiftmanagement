@@ -6,10 +6,6 @@ const Shifts = require('../models/shift');
 const Check = require('./check.js');
 const router = express.Router();
 
-//homepageには入れるがurlを踏めないようにする
-//行けるところは基本的にmypageのみ
-//そこらへんのもろもろの処理書いてね <3
-
 router.get('/',  async function (req, res) {
   let result = await Check(req.session.authentication, req.session.user);
   if (result[0] && result[1]) {
@@ -29,14 +25,18 @@ router.get('/',  async function (req, res) {
       where: {
         systemid: req.session.user
       }
-    }).then((data) => {
-      console.log(data[0].affiliationid);
-      console.log(data[0].store.storeid); //これがurlになる
-      for(var i = 0;i < userdata.storecount;i++){
-        joinedstore.push(data[i].store.storeid);
+    }).then((data) => { //データが場合の処理
+      if(data[0]){
+        console.log(data[0].affiliationid);
+        console.log(data[0].store.storeid); //これがurlになる
+        for(var i = 0;i < userdata.storecount;i++){
+          joinedstore.push(data[i].store.storeid);
+        }
+        console.log(joinedstore);
+        res.render('homepage', {title:"ホームページ", user:userdata.username , store: joinedstore});
+      }else{
+        res.render('homepage', {title:"ホームページ", user: userdata.username ,store: ['まだどこにも所属していません']});
       }
-      console.log(joinedstore);
-      res.render('homepage', {title:"ホームページ", user:userdata.username , store: joinedstore});
     })
   }else if(result[0]){
     res.redirect('/resend');
