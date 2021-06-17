@@ -14,16 +14,12 @@ const Shifts = loader.database.define(
       type: Sequelize.UUID, 
       allownull: false
     },
-    confirm: {
-      type: Sequelize.INTEGER,
-      allownull: false
-    },
-    sdate: {
+    date: {
       type: Sequelize.DATE,
       allownull: false
     },
-    edate: {
-      type: Sequelize.DATE,
+    time: {
+      type: Sequelize.TEXT,
       allownull: false
     }
   },

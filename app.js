@@ -12,16 +12,22 @@ const Users = require('./models/user');
 const Stores = require('./models/store');
 const Shifts = require('./models/shift');
 const Affiliations = require('./models/affiliation');
+const Times = require('./models/time');
 
+//time作成を追加
 Users.sync().then(() => {
-  Stores.belongsTo(Users, { foreignKey: 'ownerid' });
+  Times.sync().then(() =>{
+    Stores.belongsTo(Users, { foreignKey: 'ownerid' });
+    Stores.belongsTo(Times, { foreignKey: 'timeid'});
   Stores.sync().then(() => {
     Affiliations.belongsTo(Users, { foreignKey: 'systemid' });
     Affiliations.belongsTo(Stores, { foreignKey: 'storeid' });
+    Affiliations.belongsTo(Times, { foreignKey: 'timeid'});
     Affiliations.sync().then(() => {
       Shifts.belongsTo(Affiliations, { foreignKey: 'affiliationid' });
       Shifts.sync();
     });
+  })
   })
 });
 
@@ -32,6 +38,8 @@ const newStoreRouter = require('./routes/newstore');
 const logoutRouter = require('./routes/logout');
 const authRouter = require('./routes/secondauth');
 const joinRouter = require('./routes/join');
+const resendRouter = require('./routes/resend');
+const storeRouter = require('./routes/store');
 
 const app = express();
 app.use(helmet());
@@ -55,6 +63,8 @@ app.use('/newstore', newStoreRouter);
 app.use('/logout', logoutRouter);
 app.use('/auth', authRouter);
 app.use('/join', joinRouter);
+app.use('/resend', resendRouter);
+app.use('/store', storeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
