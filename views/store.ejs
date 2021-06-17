@@ -9,6 +9,9 @@
 <body>
   <p><%=  storename %></p>
   <p><%=  storeid %></p>
+  <% if (owner === 'YES'){ %>
+    <p>お前はここのオーナーや</p>
+  <% } %>
   <p><%=  owner %></p>
   <p><%=  comment %></p>
 </body>

@@ -24,15 +24,22 @@ router.get('/:id', async function(req, res) {
     console.log(joinedUser);
     console.log("aaaaaa");
     console.dir(joinedUser, { depth: 3});
-    if(joinedUser.joined){
+    if(joinedUser.joined && req.session.user === joinedUser.store.ownerid){
       console.log("所属ユーザー");
       //今は４つだが将来的にはシフトデータも渡す
       res.render('store', {
         storename:joinedUser.store.storename, 
         storeid:joinedUser.store.storeid,
-        owner: joinedUser.store.ownerid,
+        owner: 'YES',
         comment: joinedUser.store.comment
       })
+    }else if(joinedUser.joined){
+      res.render('store', {
+        storename:joinedUser.store.storename, 
+        storeid:joinedUser.store.storeid,
+        owner: joinedUser.store.ownerid,
+        comment: joinedUser.store.comment
+      });
     }else{
       console.log("あなたはこの店に所属していません");
       res.redirect('/homepage');
