@@ -23,6 +23,9 @@
     <p>参加中の店舗</p>
     <ul>
       <!--ejs のforeachで要素を全て出力する -->
+      <% store.forEach(function (value) { %>
+        <li><a href="http://localhost:8000/homepage/<%= value %>"><%= value %></a></li> <!--将来的にaの中身はstorename に変更する-->
+      <% }); %>
     </ul>
   </div>
 </body>
