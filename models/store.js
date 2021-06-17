@@ -21,6 +21,10 @@ const Stores = loader.database.define (
     comment:{
       type: Sequelize.TEXT,
       allownull: true
+    },
+    timeid:{
+      type: Sequelize.UUID,
+      allownull: false
     }
   },
   {

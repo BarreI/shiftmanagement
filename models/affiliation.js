@@ -1,5 +1,4 @@
 'use strict'
-const SESTransport = require('nodemailer/lib/ses-transport');
 const loader = require('./sequelize-loader');
 const Sequelize = loader.Sequelize;
 
@@ -23,32 +22,8 @@ const Affiliations = loader.database.define(
       type: Sequelize.BOOLEAN,
       allownull:false
     },
-    monday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    tuesday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    wednesday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    thursday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    friday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    saturday: {
-      type: Sequelize.TEXT,
-      allownull: false
-    },
-    sunday: {
-      type: Sequelize.TEXT,
+    timeid: {
+      type: Sequelize.UUID,
       allownull: false
     },
     Salary: {//通常給金
