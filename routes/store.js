@@ -8,19 +8,20 @@ const router = express.Router();
 
 //参加していないユーザーを弾く処理
 //エラーメッセージは存在しないと返すこと
-router.get('/:id', async function(req, res) {
+router.get('/:id', async function (req, res) {
+  console.log("storefile");
   let result = await Check(req.session.authentication, req.session.user);
-  if(result[0] && result[1]){
+  if (result[0] && result[1]) {
     let storeid = req.params.id;
     //中身に変更を加える
     /**
-     * joinedUser は参加してるかどうかを調べるだけなので
+     * user は参加してるかどうかを調べるだけなので
      * attribute で joined のみを指定する
      * 
      * そのあとに表示するデータを検索して表示する
      */
-    try{
-      let joinedUser = await Affiliations.findOne({
+    try {
+      let user = await Affiliations.findOne({
         include: [
           {
             model: Stores
@@ -31,38 +32,60 @@ router.get('/:id', async function(req, res) {
           storeid: storeid
         }
       });
-      console.log(joinedUser);
-      console.log("aaaaaa");
-      console.dir(joinedUser, { depth: 3});
-      if(joinedUser.joined && req.session.user === joinedUser.store.ownerid){
+      let joinedUser = await Affiliations.findAll({
+        where: {
+          storeid: storeid,
+          joined: true
+        }
+      });
+      let invitedUser = await Affiliations.findAll({
+        include: [
+          {
+            model: Users
+          }
+        ],
+        where: {
+          storeid: storeid,
+          joined: false
+        }
+      });
+      let joinedList = [];
+      let invitedList = [];
+
+      for(var i=0;i<joinedUser.length;i++){
+        joinedList.push(joinedUser[i].systemid);
+      }
+      for(var j=0;j<invitedUser.length;j++){
+        invitedList.push(invitedUser[j].systemid);
+      }
+      console.log(joinedList);
+      console.log(invitedList);
+      if (user.joined && req.session.user === user.store.ownerid) {
         console.log("所有ユーザー");
         //今は４つだが将来的にはシフトデータも渡す
         res.render('store', {
-          storename:joinedUser.store.storename, 
-          storeid:joinedUser.store.storeid,
-          owner: 'YES',
-          comment: joinedUser.store.comment
+          userList: joinedList,
+          owner: "YES",
+          invitedUser: invitedList
         })
-      }else if(joinedUser.joined){
+      } else if (user.joined) {
         console.log("所属ユーザー")
         res.render('store', {
-          storename:joinedUser.store.storename, 
-          storeid:joinedUser.store.storeid,
-          owner: joinedUser.store.ownerid,
-          comment: joinedUser.store.comment
+          userList: joinedList,
+          owner: "NO"
         });
-      }else{
+      } else {
         console.log("あなたはこの店に所属していません");
         res.redirect('/homepage');
       }
-    }catch(e){
+    } catch (e) {
       console.log(e);
       res.redirect('/homepage');
     }
-  }else if(result[0]){
+  } else if (result[0]) {
     //二段階認証を有効にしてもらう
     res.redirect('/resend');
-  }else{
+  } else {
     console.log("非認証ユーザー");
     res.redirect('/login');
   }

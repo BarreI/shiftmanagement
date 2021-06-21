@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%=  storename %></title>
+  <title>aaa
+  </title>
 </head>
+
 <body>
-  <p><%=  storename %></p>
-  <p><%=  storeid %></p>
-  <% if (owner === 'YES'){ %>
-    <p>お前はここのオーナーや</p>
-  <% } %>
-  <p><%=  owner %></p>
-  <p><%=  comment %></p>
+  <p>a</p>
+  <% userList.forEach(function (value), key) { %>
+    <p>
+      <%= key %>: <%= value %>
+    </p>
+    <% }); %>
+      <% if(owner==="YES" ){ %>
+        <% invitedUser.forEach(function (a), k) { %>
+          <p>
+            <%= k %>: <%= a %>
+          </p>
+          <% }); %>
+            <% } %>
 </body>
+
 </html>
