@@ -11,15 +11,15 @@
 
 <body>
   <p>a</p>
-  <% userList.forEach(function (value), key) { %>
+  <% userList.forEach(function (value){ %>
     <p>
-      <%= key %>: <%= value %>
+    <%= value %>
     </p>
     <% }); %>
       <% if(owner==="YES" ){ %>
-        <% invitedUser.forEach(function (a), k) { %>
+        <% invitedUser.forEach(function (value) { %>
           <p>
-            <%= k %>: <%= a %>
+            <%= value %>
           </p>
           <% }); %>
             <% } %>
