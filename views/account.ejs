@@ -13,31 +13,31 @@
   <div class ="page">
     <div class="accountForm">
       <div class="titlemessage">
-        <h3>新規登録</h3>
+        <h3 class="subtitle">新規登録</h3>
       </div>
-      <form method="post" action="/">
+      <form method="post" action="/signup">
         <div>
           <div>
-            <input type="text" name="username" placeholder="username">
+            <h5>username</h5>
+            <input type="text" name="username" class="inputBox">
           </div>
           <div>
-            <input type="text" name="userid" placeholder="userid"><span id="note">3文字以上15文字以内 半角英数字</span>
+            <h5>userid</h5>
+            <input type="text" name="userid" class="inputBox"><span id="note"></span>
           </div>
           <div>
-            <input type="text" name="address" placeholder="address">
+            <h5>address</h5>
+            <input type="text" name="address" class="inputBox">
           </div>
           <div>
-            <input type="password" name="pass" placeholder="password"><span id="note">半角英数字 大文字小文字どちらも使うこと</span>
-          </div>
-          <div>
-            <input type="password" name="pass_2" placeholder="確認用 password">
+            <h5>password</h5>
+            <input type="password" name="pass" class="inputBox"><span id="note"></span>
           </div>
         </div>
-        <button type="submit">登録</button>
+        <button type="submit" class="sendbutton">登録</button>
       </form>
       <div>
-        <p>すでに登録済みの方はこちら</p>
-        <a href="http://localhost:8000/login">ログイン</a>
+        <a href="http://localhost:8000/login" class="loginpage">アカウントをお持ちですか？</a>
       </div>
     </div>
   </div>
