@@ -1,0 +1,61 @@
+:root{
+  --maincolor: #39A6A3;
+  --subcolor: #DEEEEA;
+  --accentcolor: #BF1363;
+  --color: #231E23;
+}
+
+body {
+width: 100vw;
+height: 100vh;
+margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--subcolor);
+}
+
+.Catchphrase{
+  font-size: 48px;
+  margin: 10px;
+  text-align: center;
+}
+
+.button{
+  width: 300px;
+  height: 60px;
+  border-radius: 30px;
+  margin: auto;
+  background-color: var(--maincolor);
+}
+.button p{
+  text-align: center;
+  font-weight: bold;
+  line-height: 60px;
+  margin: 20px;
+  font-size: 18px;
+}
+
+.pagemajor{
+  margin-top: 20%;
+  background-color: var(--subcolor);
+}
+
+.titlePhrase {
+  font-size: 60px;
+}
+
+.pages{
+  display: flex;
+  height:100%;
+}
+
+.leftpage {
+  width: 75%;
+}
+
+.rightpage {
+  width: 25%;
+  background-color: var(--subcolor);
+}

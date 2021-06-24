@@ -1,3 +1,12 @@
-#note {
-  color:#f0f0f0
+:root{
+  --maincolor: #39A6A3;
+  --subcolor: #DEEEEA;
+  --accentcolor: #BF1363;
+  --color: #231E23;
+}
+
+.accountForm {
+  width: 400px;
+  height: 600px;
+  background-color: var(--color);
 }
