@@ -8,11 +8,11 @@ const { env } = require('process');
 require('dotenv').config();
 const router = express.Router();
 
-router.get('/', function (req, res, next) {
+router.get('signup', function (req, res, next) {
   res.render('account', { title: '新規作成' });
 });
 
-router.post('/', function (req, res, next) {
+router.post('signup', function (req, res, next) {
   //TODO ifで分類分けしたので適切なエラーメッセージをUIに反映する
   /**
    * idが2文字以下16文字以上の場合
@@ -22,16 +22,16 @@ router.post('/', function (req, res, next) {
    */
   if (!/^[0-9a-zA-Z]{3,15}$/.test(req.body.userid)) {
     console.log("ユーザーIDに不備があります");
-    res.redirect('/');
+    res.redirect('/signup');
   } else if (!/^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address)) {
     console.log("有効なメールアドレスを利用してください");
-    res.redirect('/');
+    res.redirect('/signup');
   } else if (!/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/.test(req.body.pass)) {
     console.log("passwordには大文字小文字を含む英数字で入力してください");
-    res.redirect('/');
+    res.redirect('/signup');
   } else if (req.body.pass != req.body.pass_2) {
     console.log("passwordが一致しません同じpasswordを入力してください");
-    res.redirect('/');
+    res.redirect('/signup');
   } else {
     let addresstoken = uuid.v4();
     Users.findOrCreate({
@@ -85,10 +85,10 @@ router.post('/', function (req, res, next) {
       }else{
         if(user.systemid === req.body.userid){
           console.log("該当idデータあり");
-          res.redirect('/');
+          res.redirect('/signup');
         }else if(user.address === req.body.address){
           console.log("該当アドレスデータあり");
-          res.redirect('/');
+          res.redirect('/signup');
         }
       }
     })

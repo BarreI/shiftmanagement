@@ -10,32 +10,36 @@
 </head>
 
 <body>
-  <h1>新規登録</h1>
-  <div id="accountForm">
-    <form method="post" action="/">
-      <div>
-        <div>
-          <input type="text" name="username" placeholder="username">
-        </div>
-        <div>
-          <input type="text" name="userid" placeholder="userid"><span id="note">3文字以上15文字以内 半角英数字</span>
-        </div>
-        <div>
-          <input type="text" name="address" placeholder="address">
-        </div>
-        <div>
-          <input type="password" name="pass" placeholder="password"><span id="note">半角英数字 大文字小文字どちらも使うこと</span>
-        </div>
-        <div>
-          <input type="password" name="pass_2" placeholder="確認用 password">
-        </div>
+  <div class ="page">
+    <div class="accountForm">
+      <div class="titlemessage">
+        <h3>新規登録</h3>
       </div>
-      <button type="submit">登録</button>
-    </form>
-  </div>
-  <div>
-    <p>すでに登録済みの方はこちら</p>
-    <a href="http://localhost:8000/login">ログイン</a>
+      <form method="post" action="/">
+        <div>
+          <div>
+            <input type="text" name="username" placeholder="username">
+          </div>
+          <div>
+            <input type="text" name="userid" placeholder="userid"><span id="note">3文字以上15文字以内 半角英数字</span>
+          </div>
+          <div>
+            <input type="text" name="address" placeholder="address">
+          </div>
+          <div>
+            <input type="password" name="pass" placeholder="password"><span id="note">半角英数字 大文字小文字どちらも使うこと</span>
+          </div>
+          <div>
+            <input type="password" name="pass_2" placeholder="確認用 password">
+          </div>
+        </div>
+        <button type="submit">登録</button>
+      </form>
+      <div>
+        <p>すでに登録済みの方はこちら</p>
+        <a href="http://localhost:8000/login">ログイン</a>
+      </div>
+    </div>
   </div>
 </body>
 

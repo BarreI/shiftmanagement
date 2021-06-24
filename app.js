@@ -31,6 +31,7 @@ Users.sync().then(() => {
   })
 });
 
+const firstpageRouter = require('./routes/firstpage');
 const accountRouter = require('./routes/account');
 const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/homepage')
@@ -56,7 +57,8 @@ app.use(cookieParser());
 app.use(express.static('views'));
 app.use(session({ secret: env.sessionCode, resave: false, saveUninitialized: false }));
 
-app.use('/', accountRouter);
+app.use('/', firstpageRouter);
+app.use('/signup', accountRouter);
 app.use('/login', loginRouter);
 app.use('/homepage', homeRouter);
 app.use('/newstore', newStoreRouter);

@@ -10,17 +10,13 @@
 </head>
 
 <body>
-  <p>a</p>
-  <% userList.forEach(function (value){ %>
-    <p>
-    <%= value %>
-    </p>
-    <% }); %>
+    <% userList.forEach(function (value){ %>
+      <p><%= value %></p> 
+      <% }); %>
       <% if(owner==="YES" ){ %>
+        <p>未参加ユーザー</p>
         <% invitedUser.forEach(function (value) { %>
-          <p>
-            <%= value %>
-          </p>
+          <p><%= value %></p>
           <% }); %>
             <% } %>
 </body>
