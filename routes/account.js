@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   //TODO ifで分類分けしたので適切なエラーメッセージをUIに反映する
   /**
-   * idが2文字以下16文字以上の場合
+   * idに不備がある場合
    * メールアドレスが有効でない場合
    * passが一致しない場合
    * pass に大文字小文字数字が使われた 半角英数字の文字列であること
@@ -26,7 +26,8 @@ router.post('/', function (req, res, next) {
   } else if (!/^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(req.body.address)) {
     console.log("有効なメールアドレスを利用してください");
     res.redirect('/signup');
-  } else if (!/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/.test(req.body.pass)) {
+  } else if (!/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])[a-zA-Z0-9]{8,32}/.test(req.body.pass)) {
+    //^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}$/i
     console.log("passwordには大文字小文字を含む英数字で入力してください");
     res.redirect('/signup');
   } else {

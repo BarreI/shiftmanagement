@@ -23,7 +23,8 @@
           </div>
           <div>
             <h5>userid</h5>
-            <input type="text" name="userid" class="inputBox"><span id="note"></span>
+            <p class="note">30文字以内の半角英数字</p>
+            <input type="text" name="userid" onkeyup="length(value)" class="inputBox">
           </div>
           <div>
             <h5>address</h5>
@@ -31,7 +32,8 @@
           </div>
           <div>
             <h5>password</h5>
-            <input type="password" name="pass" class="inputBox"><span id="note"></span>
+            <p class="note">半角英字の大文字、小文字、英数字を組み合わせて8文字以上で入力</p>
+            <input type="password" name="pass" class="inputBox">
           </div>
         </div>
         <button type="submit" class="sendbutton">登録</button>

@@ -7,7 +7,7 @@ const Check = require('./check.js');
 const router = express.Router();
 
 //参加していないユーザーを弾く処理
-//エラーメッセージは存在しないと返すこと
+//エラーメッセージは存在しないと返すこと　存在を悟られないようにそうしてるがどうするか未定
 router.get('/:id', async function (req, res) {
   console.log("storefile");
   let result = await Check(req.session.authentication, req.session.user);
