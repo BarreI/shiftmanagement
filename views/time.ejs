@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/time.css">
+  <title>time</title>
+</head>
+<body>
+  <h2>timeデータ送信</h2>
+  <div>
+    <form method="post" action="/store" name="form">
+      <div>
+        <label>
+          <input type="checkbox" value="月" name="dayOfTheWeek">月
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="火" name="dayOfTheWeek">火
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="水" name="dayOfTheWeek">水
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="木" name="dayOfTheWeek">木
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="金" name="dayOfTheWeek">金
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="土" name="dayOfTheWeek">土
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" value="日" name="dayOfTheWeek">日
+        </label>
+      </div>
+      <div>
+        <select name="firstAmOrPm" id="firstamOrPm">
+          <option value="Am">Am</option>
+          <option value="Pm">Pm</option>
+        </select>
+        <select name="firstHour" id="firstHour">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <select name="firstMin" id="firstMin">
+          <option value="00">00</option>
+          <option value="05">05</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+          <option value="45">45</option>
+          <option value="50">50</option>
+          <option value="55">55</option>
+        </select>
+      </div>
+      <p>から</p>
+      <div>
+        <select name="secondAmOrPm" id="secondAmOrPm">
+          <option value="Am">Am</option>
+          <option value="Pm">Pm</option>
+        </select>
+        <select name="secondHour" id="secondHour">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <select name="secondMin" id="secondMin">
+          <option value="00">00</option>
+          <option value="05">05</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
+          <option value="45">45</option>
+          <option value="50">50</option>
+          <option value="55">55</option>
+        </select>
+      </div>
+      <button type="button" onclick="clickBtn()">追加</button>
+      <div>
+        <p>希望時間</p>
+        <div id="desiredTime">
+
+        </div>
+      </div>
+
+      <button>登録</button>
+      
+    </form>
+  <script>
+    function clickBtn() {
+      let dayOfTheWeek = document.form.dayOfTheWeek;
+      for(let i = 0; i < dayOfTheWeek.length; i++) {
+        if(dayOfTheWeek[i].checked) {
+          
+        }
+      }
+
+    }
+  </script>
+</body>
+</html>

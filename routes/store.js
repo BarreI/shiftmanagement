@@ -62,6 +62,10 @@ router.get('/:id', async function (req, res) {
       console.log(invitedList);
       if (user.joined && req.session.user === user.store.ownerid) {
         console.log("所有ユーザー");
+        if(user.timeid === null){
+          console.log("ﾍﾟﾛ これはnullの味");
+          res.redirect('/store/' +storeid+ '/time');
+        }
         //今は４つだが将来的にはシフトデータも渡す
         res.render('store', {
           userList: joinedList,
@@ -89,6 +93,10 @@ router.get('/:id', async function (req, res) {
     console.log("非認証ユーザー");
     res.redirect('/login');
   }
+});
+
+router.get('/:id/time', function(req,res,next) {
+  res.render('time');
 })
 
 module.exports = router;
