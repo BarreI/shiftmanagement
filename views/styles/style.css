@@ -1,0 +1,30 @@
+:root{
+  --maincolor: #39A6A3;
+  --subcolor: #DEEEEA;
+  --accentcolor: #BF1363;
+  --color: #231E23;
+  --colors: #6d6d6d;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: #f5f5f5;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom:0px;
+
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h5 {
+  margin: 20px 50px 2px 50px;
+  font-size: 12px;
+  color: var(--colors);
+}

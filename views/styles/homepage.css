@@ -1,0 +1,32 @@
+:root{
+  --maincolor: #39A6A3;
+  --subcolor: #DEEEEA;
+  --accentcolor: #BF1363;
+  --color: #231E23;
+  --colors: #6d6d6d;
+}
+
+header {
+  background-color: var(--subcolor);
+}
+
+h2 {
+  margin: 0px;
+  padding: 20px;
+}
+
+/* .header-flex {
+  display: flex;
+} */
+
+#header-login-user {
+  margin: 40px 2px 0px 1200px;
+}
+
+#header-label-flag {
+  display: none;
+}
+
+.header-menu {
+  float: left
+}

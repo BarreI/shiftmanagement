@@ -1,0 +1,68 @@
+:root{
+  --maincolor: #39A6A3;
+  --subcolor: #DEEEEA;
+  --accentcolor: #BF1363;
+  --color: #231E23;
+  --colors: #6d6d6d;
+}
+
+.loginform {
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 200px 470px;
+}
+
+.login-header {
+  text-align: center;
+  padding: 20px;
+  margin: 0px
+}
+
+.loginInput {
+  width: 400px;
+  height: 40px;
+  font-size: 20px;
+  margin:0px 50px;
+}
+
+.sendbutton {
+  width:200px;
+  height: 40px;
+  font-size: 20px;
+  margin: 25px 150px 0px 150px;
+}
+
+.forgetpass {
+  font-size: 4px;
+  margin: 0px auto 0px 345px;
+}
+
+.newaccount {
+  font-size: 12px;
+}
+
+.note {
+  font-size: 12px;
+  margin: 2px 150px;
+}
+
+#passview {
+  margin: 4px 0px 4px 50px;
+  font-size: 8px;
+}
+
+#passviewtext {
+  font-size: 12px;
+}
+
+.flexbox{
+  display: flex;
+}
+
+#passviewtext {
+  font-size: 8px;
+  margin: 4px 0px 4px 5px;
+}

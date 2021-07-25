@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./styles/time.css">
   <title>time</title>
 </head>
+
 <body>
   <h2>timeデータ送信</h2>
   <div>
@@ -47,9 +49,9 @@
         </label>
       </div>
       <div>
-        <select name="firstAmOrPm" id="firstamOrPm">
-          <option value="Am">Am</option>
-          <option value="Pm">Pm</option>
+        <select name="firstAmOrPm" id="firstAmOrPm">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
         </select>
         <select name="firstHour" id="firstHour">
           <option value="00">00</option>
@@ -83,8 +85,8 @@
       <p>から</p>
       <div>
         <select name="secondAmOrPm" id="secondAmOrPm">
-          <option value="Am">Am</option>
-          <option value="Pm">Pm</option>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
         </select>
         <select name="secondHour" id="secondHour">
           <option value="00">00</option>
@@ -124,18 +126,23 @@
       </div>
 
       <button>登録</button>
-      
+
     </form>
-  <script>
-    function clickBtn() {
-      let dayOfTheWeek = document.form.dayOfTheWeek;
-      for(let i = 0; i < dayOfTheWeek.length; i++) {
-        if(dayOfTheWeek[i].checked) {
-          
+    <script>
+      let array = [];
+      function clickBtn() {
+        let dayOfTheWeek = document.form.dayOfTheWeek;
+        let firstTime = document.getElementById('firstAmOrPm').value + ' ' + document.getElementById('firstHour').value + ':' + document.getElementById('firstMin').value;
+        let secondTime = document.getElementById('secondAmOrPm').value + ' ' + document.getElementById('secondHour').value + ':' + document.getElementById('secondMin').value;
+        let desiredTime = document.getElementById('desiredTime');
+        for (let i = 0; i < dayOfTheWeek.length; i++) {
+          if (dayOfTheWeek[i].checked) {
+            array.push([dayOfTheWeek[i].value,firstTime,secondTime]);
+            desiredTime.insertAdjacentHTML('beforeend', '<div>'+ dayOfTheWeek[i].value + '曜 ' + firstTime + '〜' + secondTime +'</div>');
+          }
         }
       }
-
-    }
-  </script>
+    </script>
 </body>
+
 </html>

@@ -6,28 +6,52 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/vue@3.0.7"></script>
+  <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/style.css">
   <title>クムシフ <%= title %>
   </title>
 </head>
 
 <body>
-  <div class="login">
-    <div class="login-triangle"></div>
-    
-    <h2 class="login-header">Log in</h2>
-  
-    <form class="login-container" method="post" action="/login">
-      <p><input type="text" name="useridOraddress" placeholder="useridかaddress"></p>
-      <p><input type="password" name="pass" placeholder="password"></p>
-      <p><input type="submit" value="Log in"></p>
-    </form>
+  <div class="pages">
+    <div class="loginform">
+      <div class="login">
+        <div class="login-triangle"></div>
+        
+        <h3 class="login-header">Login</h3>
+      
+        <form class="login-container" method="post" action="/login">
+          <h5>idまたは、address</h5>
+          <input type="text" name="useridOraddress" class="loginInput">
+          <h5>password</h5>
+          <div class="flexbox">
+            <input type="checkbox" id="passview" onclick="showpass()">
+            <p id="passviewtext">パスワードを表示</p>
+          </div>
+          <div>
+            <input type="password" name="pass" class="loginInput" id="passInput">
+          </div>
+          <a href="http://localhost:8000/mypage/resetpassword" class="forgetpass">パスワードを忘れた場合</a>
+          <input type="submit" value="Login" class="sendbutton">
+        </form>
+      </div>
+      <div>
+        <p class="note">アカウントが必要ですか？<a href="http://localhost:8000" class="newaccount">登録</a></p>
+      </div>
+    </div>
   </div>
-  <div>
-    <p>未登録の方はこちら</p>
-      <a href="http://localhost:8000">新規登録</a>
-  </div>
-  <script src="javascripts/login.js"></script>
+  <script>
+    let passview = document.getElementById("passview");
+    let passInput = document.getElementById("passInput");
+    function showpass(){
+      if(passInput.type === 'password'){
+        passInput.type = 'text';
+      }else{
+        passInput.type = 'password';
+      }
+    }
+      e.preventDefault();
+  </script>
 </body>
 
 </html>

@@ -95,8 +95,14 @@ router.get('/:id', async function (req, res) {
   }
 });
 
-router.get('/:id/time', function(req,res,next) {
-  res.render('time');
+router.get('/:id/time', async function(req,res,next) {
+  let result = await Check(req.session.authentication, req.session.user);
+  if(result[0] && result[1]){
+    res.render('time');
+  }else{
+    console.log("ページをみるにはログインしてください");
+    res.redirect('/login');
+  }
 })
 
 module.exports = router;

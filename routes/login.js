@@ -8,7 +8,7 @@ const { render } = require('ejs');
 const router = express.Router();
 
 router.get('/', function (req, res, next) {
-  res.render('login', { title: 'ログイン' });
+    res.render('login', { title: 'ログイン' });
 });
 
 router.post('/', function (req, res, next) {
